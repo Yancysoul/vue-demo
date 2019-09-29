@@ -29,7 +29,7 @@
             <el-button type="success" @click="register" :size="size">新用户注册</el-button>
           </el-col>
           <el-col :span="12">
-            <el-button type="primary" @click="submit('loginInfo')" :size="size">登录</el-button>
+            <el-button type="primary" @click="submit('loginInfo')" @keyup.enter="submit('loginInfo')" :size="size">登录</el-button>
           </el-col>
           <el-col :span="24">
             <el-link type="primary" :underline="false" style="font-size: 12px;" @click="forgetPassword">忘记密码？</el-link>
@@ -70,29 +70,34 @@ export default {
   mounted() {
     this.identifyCode = "";
     this.makeCode(this.identifyCodes, 4);
+    
   },
   methods: {
     // 注册
-    register () {},
+    register () {
+      this.$router.replace('/register')
+    },
     // 登录
     submit (loginInfo) {
       this.$refs[loginInfo].validate((valid) => {
         if (valid) {
           if (this.loginInfo.identify !== this.identifyCode) {
-            this.$message({
-              message: '验证码错误',
-              type: 'warning'
-            })
+            // this.$message({
+            //   message: '验证码错误',
+            //   type: 'warning'
+            // })
+            this.$message.warning('验证码错误')
             this.loginInfo.identify = ''
             this.refreshCode()
             return false;
           } else if (this.loginInfo.username === 'admin' && this.loginInfo.userpassword === '123456') {
             this.$router.replace('/')
           } else {
-            this.$message({
-              message: '用户名或密码错误',
-              type: 'warning'
-            })
+            // this.$message({
+            //   message: '用户名或密码错误',
+            //   type: 'warning'
+            // })
+            this.$message.warning('用户名或密码错误')
             return false;
           }
         } else {
@@ -102,7 +107,7 @@ export default {
     },
     // 忘记密码
     forgetPassword () {
-      this.$router.replace('/register')
+      // this.$router.replace('/register')
     },
     randomNum(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
