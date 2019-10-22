@@ -91,12 +91,9 @@ export default {
             this.refreshCode()
             return false;
           } else if (this.loginInfo.username === 'admin' && this.loginInfo.userpassword === '123456') {
-            this.$router.replace('/')
+            this.$store.dispatch('SetToken', "123")
+            this.$router.push({path: '/'})
           } else {
-            // this.$message({
-            //   message: '用户名或密码错误',
-            //   type: 'warning'
-            // })
             this.$message.warning('用户名或密码错误')
             return false;
           }

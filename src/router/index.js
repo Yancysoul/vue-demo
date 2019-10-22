@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
+import store from '@/store'
+
 
 Vue.use(Router)
 
@@ -16,8 +18,10 @@ router.beforeEach((to, from, next) => {
   }
   if (to.path === '/login' || !to.meta.requireAuth) {
     next()
-  } else if (!localStorage.getItem('token')) {
+  } else if (!store.state.user.token) {
     next({ path: '/login' })
+  } else {
+    next()
   }
 })
 
