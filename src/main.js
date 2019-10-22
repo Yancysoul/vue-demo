@@ -6,6 +6,8 @@ import router from '@/router'
 import store from '@/store'
 import ElementUI, { Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
+import Antd from 'ant-design-vue'
+import 'ant-design-vue/dist/antd.css'
 import VueParticles from 'vue-particles'
 
 const showMessage = Symbol('showMessage')
@@ -36,6 +38,7 @@ class DonMessage {
 }
 
 Vue.use(ElementUI)
+Vue.use(Antd)
 Vue.use(VueParticles)
 
 Vue.prototype.$message = new DonMessage()
