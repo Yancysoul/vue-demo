@@ -1,10 +1,181 @@
 <template>
-  
+  <div class="layout">
+  </div>
 </template>
 
 <script>
+import { mapGetter } from 'vuex'
 export default {
-
+  name: 'layout',
+  data () {
+    return {
+      menus: [
+      {
+          "hasMenue":true,
+          "menuId":"402880886c2bbee4016c2e08a3e20025",
+          "menuList":[
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c2bbee4016c3b4ac19b002c",
+                  "menuName":"菜单列表",
+                  "parentMenuId":"402880886c2bbee4016c2e08a3e20025",
+                  "url":"/menu/menulist"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c2bbee4016c4242519b004b",
+                  "menuName":"角色列表",
+                  "parentMenuId":"402880886c2bbee4016c2e08a3e20025",
+                  "url":"/menu/rolelist"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c2bbee4016c42439bdb004d",
+                  "menuName":"角色菜单",
+                  "parentMenuId":"402880886c2bbee4016c2e08a3e20025",
+                  "url":"/menu/rolemenu"
+              }
+          ],
+          "menuName":"角色菜单管理",
+          "parentMenuId":"0",
+          "url":"/menu"
+      },
+      {
+          "hasMenue":true,
+          "menuId":"402880886c4c74c1016c60afe5c8004a",
+          "menuList":[
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c60b1b0016c60c7951b0016",
+                  "menuName":"排班列表",
+                  "parentMenuId":"402880886c4c74c1016c60afe5c8004a",
+                  "url":"/scheduling/list"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402881466d48a1aa016d48b1d6940016",
+                  "menuName":"班次管理",
+                  "parentMenuId":"402880886c4c74c1016c60afe5c8004a",
+                  "url":"/scheduling/scheduleshifts"
+              }
+          ],
+          "menuName":"科室人员排班",
+          "parentMenuId":"0",
+          "url":"/scheduling"
+      },
+      {
+          "hasMenue":true,
+          "menuId":"1",
+          "menuList":[
+              {
+                  "hasMenue":true,
+                  "menuId":"2",
+                  "menuName":"医生管理",
+                  "parentMenuId":"1",
+                  "url":"/basic/doctorlist"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"3",
+                  "menuList":[
+                      {
+                          "hasMenue":true,
+                          "menuId":"5",
+                          "menuName":"用户子列表",
+                          "parentMenuId":"3",
+                          "url":"/user/list/subtest"
+                      }
+                  ],
+                  "menuName":"用户管理",
+                  "parentMenuId":"1",
+                  "url":"/basic/userlist"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c2bbee4016c2e083f2a0024",
+                  "menuName":"实施",
+                  "parentMenuId":"1",
+                  "url":"/ss"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c4c74c1016c501a4dfb0000",
+                  "menuName":"楼宇管理",
+                  "parentMenuId":"1",
+                  "url":"/basic/buildinglist"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c4c74c1016c505571ac0011",
+                  "menuName":"挂号类别",
+                  "parentMenuId":"1",
+                  "url":"/basic/regsort"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c4c74c1016c505f97900023",
+                  "menuName":"科室管理",
+                  "parentMenuId":"1",
+                  "url":"/basic/department"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c4c74c1016c5f84c31e0036",
+                  "menuName":"健康堂",
+                  "parentMenuId":"1",
+                  "url":"/basic/healthforum"
+              },
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c60b1b0016c65ca87e7002b",
+                  "menuName":"医院信息",
+                  "parentMenuId":"1",
+                  "url":"/basic/hospital"
+              }
+          ],
+          "menuName":"基础数据",
+          "parentMenuId":"0",
+          "url":"/basic"
+      },
+      {
+          "hasMenue":true,
+          "menuId":"4",
+          "menuList":[
+              {
+                  "hasMenue":true,
+                  "menuId":"402880886c2bbee4016c4704dcd60075",
+                  "menuName":"医生测试",
+                  "parentMenuId":"4",
+                  "url":"/doctor/manage/doctortest"
+              }
+          ],
+          "menuName":"参数配置",
+          "parentMenuId":"0",
+          "url":"/basic/manage"
+      },
+      {
+          "hasMenue":true,
+          "menuId":"6",
+          "menuList":[
+              {
+                  "hasMenue":true,
+                  "menuId":"7",
+                  "menuName":"门诊排版管理",
+                  "parentMenuId":"6",
+                  "url":"register/doctor"
+              }
+          ],
+          "menuName":"门诊管理",
+          "parentMenuId":"0",
+          "url":"/menu"
+      }
+  ]
+    }
+  },
+  created () {
+    this.$store.dispatch('SetMenu', this.menus)
+    console.log(this.$router.options.routes)
+  }
 }
 </script>
 

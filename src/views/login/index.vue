@@ -3,7 +3,7 @@
     <vue-particles color="#fff" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4" linesColor="#fff" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="100" :moveSpeed="5" :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" class="lizi">
     </vue-particles>
     <div class="content">
-      <div class="title"><span>系 统 登 录</span></div>
+      <div class="title"><span>用 户 登 录</span></div>
       <div class="content_form">
         <el-form :model="loginInfo" label-width="80px" :size="size" ref="loginInfo" :rules="rules">
           <el-form-item label="用户名：" prop="username">
@@ -70,7 +70,6 @@ export default {
   mounted() {
     this.identifyCode = "";
     this.makeCode(this.identifyCodes, 4);
-    
   },
   methods: {
     // 注册
