@@ -29,7 +29,7 @@
             <el-button type="success" @click="register" :size="size">新用户注册</el-button>
           </el-col>
           <el-col :span="12">
-            <el-button type="primary" @click="submit('loginInfo')" @keyup.enter="submit('loginInfo')" :size="size">登录</el-button>
+            <el-button type="primary" @click="submit('loginInfo')" :size="size">登录</el-button>
           </el-col>
           <el-col :span="24">
             <el-link type="primary" :underline="false" style="font-size: 12px;" @click="forgetPassword">忘记密码？</el-link>
@@ -66,6 +66,15 @@ export default {
         ]
       }
     }
+  },
+  created () {
+    var _this = this;
+    document.onkeydown = function(e) {
+      let key = window.event.keyCode;
+      if (key == 13) {
+        _this.submit('loginInfo')
+      }
+    };
   },
   mounted() {
     this.identifyCode = "";
